@@ -23,9 +23,12 @@ export default function Navbar({ onStartProject }) {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <span className={`font-heading text-4xl md:text-5xl lg:text-6xl uppercase tracking-tighter font-black transition-colors duration-500 leading-none ${scrolled ? 'text-white' : 'text-brand-dark'}`}>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={`font-heading text-3xl md:text-4xl lg:text-5xl uppercase tracking-tighter font-black transition-colors duration-500 leading-none ${scrolled ? 'text-white' : 'text-brand-dark'}`}
+          >
             Zentrix
-          </span>
+          </button>
         </div>
 
         {/* Desktop Nav */}
