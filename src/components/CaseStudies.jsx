@@ -122,7 +122,7 @@ const projects = [
     year: '2025',
     image: '/mockup-vynts.png',
     visual: null,
-    fit: 'cover-top',
+    fit: 'contain-grid',
     description: 'An all-in-one AI content creation platform where users manage their entire workflow — from scripting to editing, uploading, and viewing analytics — in one place.',
     context: 'Building a professional web-based video editor with AI integration is complex, expensive, and easy to get wrong.',
     result: 'A working web video editor that compresses days of editing work into minutes. Currently in testing with 200 early-access founders and creators. Early round raised.',
