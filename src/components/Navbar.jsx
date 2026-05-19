@@ -23,7 +23,7 @@ export default function Navbar({ onStartProject }) {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <span className={`font-heading text-lg md:text-xl uppercase tracking-tight font-bold transition-colors duration-500 ${scrolled ? 'text-white' : 'text-brand-dark'}`}>
+          <span className={`font-heading text-4xl md:text-5xl lg:text-6xl uppercase tracking-tighter font-black transition-colors duration-500 leading-none ${scrolled ? 'text-white' : 'text-brand-dark'}`}>
             Zentrix
           </span>
         </div>
