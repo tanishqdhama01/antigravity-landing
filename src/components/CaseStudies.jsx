@@ -4,12 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const projects = [
   {
-    title: 'Revolutionary Packaging Company',
+    title: 'Revolutionary Packaging Co.',
     category: 'AI Content System',
     year: '2024',
-    accent: 'from-violet-600 to-indigo-600',
-    accentSolid: '#6d28d9',
-    shortName: 'PACKAGING',
+    image: null,
     description: 'A company with a groundbreaking holographic print product needed a way to create high-quality product videos for investors — without hiring a full creative team.',
     context: 'Manual video production was slow, expensive, and could not keep up with the pace of fundraising activity.',
     result: 'A custom AI-powered video automation system, fully handed over to the internal team in 2 months. The company went on to raise a multi-million funding round.',
@@ -18,9 +16,7 @@ const projects = [
     title: 'Vyros',
     category: 'Fitness SaaS',
     year: '2025',
-    accent: 'from-emerald-600 to-teal-600',
-    accentSolid: '#059669',
-    shortName: 'VYROS',
+    image: null,
     description: 'A fitness and training app for the Indian market — a more affordable and feature-rich alternative to Runna, with support for a wide range of smartwatches including budget Indian brands.',
     context: 'The founder had only an idea. No product, no team, no technical direction.',
     result: 'Full discovery, UI/UX, feature planning, and MVP now in active development — with 50–60 early access signups secured before launch.',
@@ -29,9 +25,7 @@ const projects = [
     title: 'Vynts',
     category: 'AI Video Platform',
     year: '2025',
-    accent: 'from-rose-600 to-orange-600',
-    accentSolid: '#e11d48',
-    shortName: 'VYNTS',
+    image: null,
     description: 'An all-in-one AI content creation platform where users manage their entire workflow — from scripting to editing, uploading, and viewing analytics — in one place.',
     context: 'Building a professional web-based video editor with AI integration is complex, expensive, and easy to get wrong.',
     result: 'A working web video editor that compresses days of editing work into minutes. Currently in testing with 200 early-access founders and creators. Early round raised.',
@@ -90,97 +84,75 @@ export default function CaseStudies() {
         </div>
 
         {/* Case study cards */}
-        <div className="cases-grid flex flex-col gap-16">
+        <div className="cases-grid flex flex-col gap-6">
           {projects.map((project, i) => (
-            <div key={i} className="case-card grid md:grid-cols-[3fr_7fr] gap-6 md:gap-10 items-stretch">
-              {/* UI Skeleton Mockup — 30% */}
-              <div className="rounded-2xl overflow-hidden bg-[#111111] border border-white/[0.06] flex flex-col min-h-[360px]">
-                {/* Accent top stripe */}
-                <div className={`h-[3px] w-full bg-gradient-to-r ${project.accent}`} />
+            <div key={i} className="case-card grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-white/[0.07]">
 
-                {/* Window chrome */}
-                <div className="px-4 py-3 flex items-center gap-2 border-b border-white/[0.05]">
-                  <div className="flex gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-white/[0.12]" />
-                    <span className="w-2 h-2 rounded-full bg-white/[0.12]" />
-                    <span className="w-2 h-2 rounded-full bg-white/[0.12]" />
-                  </div>
-                  <div className="ml-2 flex-1 h-3.5 rounded-sm bg-white/[0.05]" />
+              {/* Left — mockup image */}
+              <div className="relative aspect-[4/3] md:aspect-auto bg-[#0e0e0e] overflow-hidden">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    {/* Subtle radial glow placeholder */}
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.04)_0%,_transparent_70%)]" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                      <div className="w-12 h-12 rounded-xl border border-white/10 flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 20.25h18M3.75 4.5h16.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V5.25a.75.75 0 01.75-.75z" />
+                        </svg>
+                      </div>
+                      <span className="text-white/20 text-[10px] uppercase tracking-widest">Mockup coming soon</span>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Right — content */}
+              <div className="flex flex-col justify-between p-8 md:p-12 bg-brand-dark border-l border-white/[0.07]">
+                <div>
+                  {/* Category / year */}
+                  <p className="text-white/40 text-xs uppercase tracking-[0.18em] mb-5">
+                    {project.category} / {project.year}
+                  </p>
+
+                  {/* Title */}
+                  <h3
+                    className="font-heading font-black uppercase text-white leading-[0.9] tracking-tight mb-6"
+                    style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)' }}
+                  >
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-white/60 text-sm leading-relaxed max-w-md">
+                    {project.description}
+                  </p>
                 </div>
 
-                {/* Body */}
-                <div className="flex-1 p-4 flex flex-col gap-3">
-                  {/* Category pill */}
-                  <span className="self-start px-2 py-0.5 rounded border border-white/[0.08] text-white/30 text-[9px] uppercase tracking-widest">
-                    {project.category}
-                  </span>
-
-                  {/* Hero block */}
-                  <div className={`rounded-lg bg-gradient-to-br ${project.accent} p-4 flex items-end justify-between`} style={{ opacity: 0.18 }} />
-                  <div className={`-mt-[3.5rem] mx-1 rounded-lg bg-gradient-to-br ${project.accent} p-4 flex items-end justify-between relative z-10`}>
-                    <span className="font-heading font-black text-white/80 text-xl leading-none tracking-tight uppercase">
-                      {project.shortName}
-                    </span>
-                    <span className="text-white/40 text-[10px] font-mono">{project.year}</span>
-                  </div>
-
-                  {/* Skeleton text rows */}
-                  <div className="flex flex-col gap-1.5 mt-1">
-                    <div className="h-2 rounded-full bg-white/[0.07] w-full" />
-                    <div className="h-2 rounded-full bg-white/[0.05] w-4/5" />
-                    <div className="h-2 rounded-full bg-white/[0.04] w-3/5" />
-                  </div>
-
-                  {/* Mini stat cards */}
-                  <div className="grid grid-cols-2 gap-2 mt-1">
-                    <div className="bg-white/[0.04] rounded-lg p-2.5 border border-white/[0.05]">
-                      <div className="h-1.5 w-1/2 bg-white/[0.07] rounded mb-1.5" />
-                      <div className="h-2.5 w-3/4 bg-white/[0.12] rounded" />
+                {/* Context + Result — 2-col */}
+                <div className="grid grid-cols-2 gap-6 mt-10 pt-8 border-t border-white/[0.07]">
+                  <div>
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="text-white/20 text-xs">↗</span>
+                      <span className="text-white/40 text-[10px] uppercase tracking-widest font-medium">Context</span>
                     </div>
-                    <div className="bg-white/[0.04] rounded-lg p-2.5 border border-white/[0.05]">
-                      <div className="h-1.5 w-1/2 bg-white/[0.07] rounded mb-1.5" />
-                      <div className="h-2.5 w-2/3 bg-white/[0.12] rounded" />
-                    </div>
+                    <p className="text-white/55 text-sm leading-relaxed">{project.context}</p>
                   </div>
-
-                  {/* More skeleton rows */}
-                  <div className="flex flex-col gap-1.5">
-                    <div className="h-1.5 rounded-full bg-white/[0.04] w-full" />
-                    <div className="h-1.5 rounded-full bg-white/[0.03] w-5/6" />
-                  </div>
-
-                  {/* Bottom progress bar */}
-                  <div className="mt-auto pt-2">
-                    <div className="h-[2px] w-full bg-white/[0.05] rounded-full overflow-hidden">
-                      <div className={`h-full w-3/5 bg-gradient-to-r ${project.accent} rounded-full`} />
+                  <div>
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="text-white/20 text-xs">↗</span>
+                      <span className="text-white/40 text-[10px] uppercase tracking-widest font-medium">Result</span>
                     </div>
+                    <p className="text-white/55 text-sm leading-relaxed">{project.result}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Content — 70% */}
-              <div className="flex flex-col justify-center">
-                <p className="text-white/30 text-xs uppercase tracking-widest mb-3">
-                  {project.category} · {project.year}
-                </p>
-                <h3 className="text-white text-3xl md:text-4xl font-heading font-bold uppercase mb-5 leading-tight">
-                  {project.title}
-                </h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-6">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <span className="text-brand-red text-xs uppercase tracking-widest font-medium">Context</span>
-                    <p className="text-white/50 text-sm mt-1 leading-relaxed">{project.context}</p>
-                  </div>
-                  <div>
-                    <span className="text-brand-red text-xs uppercase tracking-widest font-medium">Result</span>
-                    <p className="text-white/50 text-sm mt-1 leading-relaxed">{project.result}</p>
-                  </div>
-                </div>
-              </div>
             </div>
           ))}
         </div>
