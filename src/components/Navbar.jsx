@@ -24,7 +24,7 @@ export default function Navbar({ onStartProject }) {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <span className={`font-heading text-lg md:text-xl uppercase tracking-tight font-bold transition-colors duration-500 ${scrolled ? 'text-white' : 'text-brand-dark'}`}>
-            [Your Agency Name]
+            Zentrix
           </span>
         </div>
 

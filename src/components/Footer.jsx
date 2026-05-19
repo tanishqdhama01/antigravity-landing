@@ -64,10 +64,10 @@ export default function Footer({ onStartProject }) {
       <div className="py-6 px-6 md:px-10 bg-brand-dark border-t border-white/10">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-white/40 text-xs">
-            © 2026 [Your Agency Name]
+            © 2026 Zentrix
           </span>
           <span className="text-white/40 text-xs">
-            [your email address]
+            help@zentrix.com
           </span>
         </div>
       </div>

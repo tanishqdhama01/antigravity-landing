@@ -89,7 +89,7 @@ export default function ContactModal({ isOpen, onClose }) {
             <div className="hidden md:block mt-12 space-y-4">
               <div>
                 <p className="text-brand-dark/40 text-xs uppercase tracking-wider mb-1">Email</p>
-                <p className="text-brand-dark text-sm font-medium">hello@antigravity.in</p>
+                <p className="text-brand-dark text-sm font-medium">help@zentrix.com</p>
               </div>
               <div>
                 <p className="text-brand-dark/40 text-xs uppercase tracking-wider mb-1">Location</p>
