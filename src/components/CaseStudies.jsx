@@ -111,6 +111,7 @@ const projects = [
     year: '2025',
     image: '/mockup-vyros.png',
     visual: null,
+    fit: 'contain-grid',
     description: 'A fitness and training app for the Indian market — a more affordable and feature-rich alternative to Runna, with support for a wide range of smartwatches including budget Indian brands.',
     context: 'The founder had only an idea. No product, no team, no technical direction.',
     result: 'Full discovery, UI/UX, feature planning, and MVP now in active development — with 50–60 early access signups secured before launch.',
@@ -121,6 +122,7 @@ const projects = [
     year: '2025',
     image: '/mockup-vynts.png',
     visual: null,
+    fit: 'cover-top',
     description: 'An all-in-one AI content creation platform where users manage their entire workflow — from scripting to editing, uploading, and viewing analytics — in one place.',
     context: 'Building a professional web-based video editor with AI integration is complex, expensive, and easy to get wrong.',
     result: 'A working web video editor that compresses days of editing work into minutes. Currently in testing with 200 early-access founders and creators. Early round raised.',
@@ -184,14 +186,28 @@ export default function CaseStudies() {
             <div key={i} className="case-card grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-white/[0.07]">
 
               {/* Left — mockup image */}
-              <div className="relative aspect-[4/3] md:aspect-auto bg-[#0e0e0e] overflow-hidden">
+              <div
+                className="relative aspect-[4/3] md:aspect-auto overflow-hidden"
+                style={project.fit === 'contain-grid' ? {
+                  backgroundColor: '#0f1117',
+                  backgroundImage:
+                    'repeating-linear-gradient(0deg,rgba(148,163,184,0.06) 0,rgba(148,163,184,0.06) 1px,transparent 1px,transparent 32px),' +
+                    'repeating-linear-gradient(90deg,rgba(148,163,184,0.06) 0,rgba(148,163,184,0.06) 1px,transparent 1px,transparent 32px)',
+                } : { backgroundColor: '#0e0e0e' }}
+              >
                 {project.visual === 'dashboard' ? (
                   <PackagingDashboard />
                 ) : project.image ? (
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className={`absolute inset-0 w-full h-full ${
+                      project.fit === 'contain-grid'
+                        ? 'object-contain'
+                        : project.fit === 'cover-top'
+                        ? 'object-cover object-top'
+                        : 'object-cover'
+                    }`}
                   />
                 ) : (
                   <>
