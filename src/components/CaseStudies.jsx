@@ -11,12 +11,8 @@ const projects = [
     description: 'A company with a groundbreaking holographic print product needed a way to create high-quality product videos for investors — without hiring a full creative team.',
     context: 'Manual video production was slow, expensive, and could not keep up with the pace of fundraising activity.',
     result: 'A custom AI-powered video automation system, fully handed over to the internal team in 2 months. The company went on to raise a multi-million funding round.',
-    stats: [
-      { value: '2', unit: 'months', label: 'Full delivery' },
-      { value: '50+', unit: '', label: 'AI videos produced' },
-      { value: 'Multi-million', unit: '', label: 'Funding round raised' },
-    ],
-    outcome: 'Delivered end-to-end. Team owns it fully.',
+    hero: { value: '50+', label: 'AI videos produced' },
+    chips: ['2 months to delivery', 'Multi-million raise', 'Fully handed over'],
   },
   {
     title: 'Vyros',
@@ -26,12 +22,8 @@ const projects = [
     description: 'A fitness and training app for the Indian market — a more affordable and feature-rich alternative to Runna, with support for a wide range of smartwatches including budget Indian brands.',
     context: 'The founder had only an idea. No product, no team, no technical direction.',
     result: 'Full discovery, UI/UX, feature planning, and MVP now in active development — with 50–60 early access signups secured before launch.',
-    stats: [
-      { value: '0→MVP', unit: '', label: 'Built from scratch' },
-      { value: '3', unit: 'months', label: 'Idea to active dev' },
-      { value: '60+', unit: '', label: 'Pre-launch signups' },
-    ],
-    outcome: 'MVP live. Growing waitlist before launch.',
+    hero: { value: '60+', label: 'Founders on waitlist' },
+    chips: ['0 → MVP', '3 months', 'Pre-launch signups'],
   },
   {
     title: 'Vynts',
@@ -41,12 +33,8 @@ const projects = [
     description: 'An all-in-one AI content creation platform where users manage their entire workflow — from scripting to editing, uploading, and viewing analytics — in one place.',
     context: 'Building a professional web-based video editor with AI integration is complex, expensive, and easy to get wrong.',
     result: 'A working web video editor that compresses days of editing work into minutes. Currently in testing with 200 early-access founders and creators. Early round raised.',
-    stats: [
-      { value: '200+', unit: '', label: 'Early access users' },
-      { value: 'Days→Min', unit: '', label: 'Editing time saved' },
-      { value: 'Seed', unit: 'round', label: 'Funding raised' },
-    ],
-    outcome: 'In active testing. Seed round closed.',
+    hero: { value: '200+', label: 'Early access users' },
+    chips: ['Seed round closed', 'Days → Minutes', 'In active testing'],
   },
 ]
 
@@ -105,30 +93,47 @@ export default function CaseStudies() {
         <div className="cases-grid flex flex-col gap-16">
           {projects.map((project, i) => (
             <div key={i} className="case-card grid md:grid-cols-2 gap-8 md:gap-12">
-              {/* Stats card */}
-              <div className={`relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br ${project.color} p-8 flex flex-col justify-between`}>
-                {/* Top label */}
-                <div className="flex items-center justify-between">
-                  <span className="text-white/50 text-xs uppercase tracking-widest font-medium">{project.category}</span>
-                  <span className="text-white/30 text-xs font-mono">{project.year}</span>
-                </div>
+              {/* Editorial stat card */}
+              <div className={`relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br ${project.color}`}>
+                {/* Grid texture overlay */}
+                <div
+                  className="absolute inset-0 opacity-[0.06]"
+                  style={{
+                    backgroundImage:
+                      'repeating-linear-gradient(0deg,white 0,white 1px,transparent 1px,transparent 48px),repeating-linear-gradient(90deg,white 0,white 1px,transparent 1px,transparent 48px)',
+                  }}
+                />
 
-                {/* Stats grid */}
-                <div className="grid grid-cols-3 gap-4">
-                  {project.stats.map((stat, si) => (
-                    <div key={si} className="flex flex-col">
-                      <span className="text-white font-heading font-black text-2xl md:text-3xl leading-none tracking-tight">
-                        {stat.value}
-                        {stat.unit && <span className="text-white/50 text-sm font-normal ml-1">{stat.unit}</span>}
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col p-8">
+                  {/* Top row */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/50 text-[10px] uppercase tracking-[0.2em] font-medium">{project.category}</span>
+                    <span className="text-white/25 text-[10px] font-mono">{project.year}</span>
+                  </div>
+
+                  {/* Hero stat — centred, fills the card */}
+                  <div className="flex-1 flex flex-col items-center justify-center text-center">
+                    <span className="font-heading font-black text-white leading-none tracking-tighter"
+                      style={{ fontSize: 'clamp(5rem, 14vw, 8rem)' }}>
+                      {project.hero.value}
+                    </span>
+                    <span className="text-white/40 text-xs uppercase tracking-[0.18em] mt-4">
+                      {project.hero.label}
+                    </span>
+                  </div>
+
+                  {/* Bottom chips */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.chips.map((chip, ci) => (
+                      <span
+                        key={ci}
+                        className="px-3 py-1 rounded-full border border-white/15 text-white/50 text-[10px] tracking-wide"
+                      >
+                        {chip}
                       </span>
-                      <span className="text-white/40 text-xs mt-2 leading-snug">{stat.label}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bottom outcome */}
-                <div className="border-t border-white/10 pt-4">
-                  <p className="text-white/60 text-xs leading-relaxed">{project.outcome}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
 
