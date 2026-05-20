@@ -3,6 +3,8 @@ import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import BrandSection from './components/BrandSection'
@@ -63,6 +65,8 @@ function App() {
       <FAQ />
       <Footer onStartProject={openContact} />
       <ContactModal isOpen={contactOpen} onClose={closeContact} />
+      <Analytics />
+      <SpeedInsights />
     </main>
   )
 }
